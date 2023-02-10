@@ -29,6 +29,7 @@ class GameScreen(Screen):
 
     def __init__(self, resolution):
         super().__init__(resolution, "game")
+        self.fill("orange")
 
     def draw(self, display):
         rect = pygame.Rect((500, 500), (150, 150))
@@ -41,6 +42,7 @@ class HighScoresScreen(Screen):
 
     def __init__(self, resolution):
         super().__init__(resolution, "highscores")
+        self.fill("green")
 
     def draw(self, display):
         rect = pygame.Rect((900, 100), (250, 75))
@@ -53,6 +55,7 @@ class SelectScreen(Screen):
 
     def __init__(self, resolution):
         super().__init__(resolution, "select")
+        self.fill("blue")
 
     def draw(self, display):
         pygame.draw.circle(self, (217, 98, 119), (200, 200), 50)

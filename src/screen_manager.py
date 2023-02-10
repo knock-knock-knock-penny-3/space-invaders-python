@@ -27,3 +27,8 @@ class ScreenManager:
     def draw(self, display):
         """method docstring"""
         self.screens[self.current_screen].draw(display)
+
+    def switch_screen(self, screen_type):
+        """method docstring"""
+        if screen_type in self.screens:
+            self.current_screen = screen_type

@@ -5,7 +5,7 @@
 import sys
 import pygame
 from pygame import display, event, time
-from pygame.constants import FULLSCREEN, KEYDOWN, K_ESCAPE, QUIT
+from pygame.constants import FULLSCREEN, KEYDOWN, K_ESCAPE, K_1, K_2, K_3, QUIT
 
 from screen_manager import ScreenManager
 
@@ -40,8 +40,17 @@ class GameEngine:
             elif evt.type == KEYDOWN and evt.key == K_ESCAPE:
                 self.exit()
 
+            if evt.type == KEYDOWN:
+                if evt.key == K_1:
+                    self.screen_manager.switch_screen("game")
+                elif evt.key == K_2:
+                    self.screen_manager.switch_screen("highscores")
+                elif evt.key == K_3:
+                    self.screen_manager.switch_screen("select")
+
     def update(self):
         """update"""
+        self.screen_manager.update()
 
     def draw(self):
         """draw"""
