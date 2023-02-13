@@ -2,23 +2,24 @@
     Screen Manager Class
 """
 
-from screen import GameScreen, HighScoresScreen, SelectScreen
+from screen import HighScoresScreen, SelectScreen
+from game_screen import GameScreen
 
 
 class ScreenManager:
     """class docstring"""
 
     def __init__(self, resolution):
-        self.current_screen = "highscores"
+        self.current_screen = "game"
         self.screens = {
             "select": SelectScreen(resolution),
             "game": GameScreen(resolution),
             "highscores": HighScoresScreen(resolution),
         }
 
-    def handle_input(self):
+    def handle_input(self, evt):
         """method docstring"""
-        self.screens[self.current_screen].handle_input()
+        self.screens[self.current_screen].handle_input(evt)
 
     def update(self):
         """method docstring"""
