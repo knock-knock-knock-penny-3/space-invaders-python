@@ -3,7 +3,10 @@
 """
 
 import pygame
+from pygame.math import Vector2
 from pygame.surface import Surface
+
+from game_constants import WORLD_CONSTRAINTS
 
 
 class Screen(Surface):
@@ -12,8 +15,9 @@ class Screen(Surface):
     def __init__(self, resolution, screen_type):
         super().__init__(resolution)
         self.screen_type = screen_type
+        WORLD_CONSTRAINTS[screen_type] = Vector2(resolution)
 
-    def handle_input(self):
+    def handle_input(self, evt):
         """mehod docstring"""
 
     def update(self):
@@ -22,19 +26,6 @@ class Screen(Surface):
     def draw(self, display):
         """mehod docstring"""
         display.blit(self, (0, 0))
-
-
-class GameScreen(Screen):
-    """class docstring"""
-
-    def __init__(self, resolution):
-        super().__init__(resolution, "game")
-        self.fill("orange")
-
-    def draw(self, display):
-        rect = pygame.Rect((500, 500), (150, 150))
-        pygame.draw.rect(self, (98, 119, 217), rect)
-        super().draw(display)
 
 
 class HighScoresScreen(Screen):
