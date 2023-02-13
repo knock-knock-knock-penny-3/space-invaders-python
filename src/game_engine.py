@@ -7,13 +7,13 @@ import pygame
 from pygame import display, event, time
 from pygame.constants import FULLSCREEN, KEYDOWN, K_ESCAPE, K_1, K_2, K_3, QUIT
 
+from game_constants import MAIN_BG_COLOR
+
 from screen_manager import ScreenManager
 
 
 class GameEngine:
     """class docstring"""
-
-    MAIN_BG_COLOR = (30, 30, 30)  # #1E1E1E
 
     def __init__(self):
         pygame.init()
@@ -40,13 +40,15 @@ class GameEngine:
             elif evt.type == KEYDOWN and evt.key == K_ESCAPE:
                 self.exit()
 
-            if evt.type == KEYDOWN:
-                if evt.key == K_1:
-                    self.screen_manager.switch_screen("game")
-                elif evt.key == K_2:
-                    self.screen_manager.switch_screen("highscores")
-                elif evt.key == K_3:
-                    self.screen_manager.switch_screen("select")
+            # if evt.type == KEYDOWN:
+            #     if evt.key == K_1:
+            #         self.screen_manager.switch_screen("game")
+            #     elif evt.key == K_2:
+            #         self.screen_manager.switch_screen("highscores")
+            #     elif evt.key == K_3:
+            #         self.screen_manager.switch_screen("select")
+
+            self.screen_manager.handle_input(evt)
 
     def update(self):
         """update"""
@@ -54,7 +56,7 @@ class GameEngine:
 
     def draw(self):
         """draw"""
-        self.display.fill(self.MAIN_BG_COLOR)
+        self.display.fill(MAIN_BG_COLOR)
         self.screen_manager.draw(self.display)
         display.flip()
 
