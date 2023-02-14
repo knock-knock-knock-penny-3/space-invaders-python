@@ -17,4 +17,7 @@ RESOURCES_DIR_NAME = 'resources'
 SOUNDS_DIR_NAME = 'sounds'
 STARSHIP_COLOR = (0, 254, 254)  # #00FEFE
 START_STARSHIPS = 3
+STORE = {
+    'last_userevent': 0
+}
 WORLD_CONSTRAINTS = {}
