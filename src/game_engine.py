@@ -5,9 +5,9 @@
 import sys
 import pygame
 from pygame import display, event, time
-from pygame.constants import FULLSCREEN, KEYDOWN, K_ESCAPE, K_1, K_2, K_3, QUIT
+from pygame.constants import FULLSCREEN, KEYDOWN, K_ESCAPE, QUIT, USEREVENT
 
-from game_constants import MAIN_BG_COLOR
+from game_constants import MAIN_BG_COLOR, STORE
 
 from screen_manager import ScreenManager
 
@@ -17,6 +17,8 @@ class GameEngine:
 
     def __init__(self):
         pygame.init()
+        STORE['last_userevent'] = USEREVENT
+
         display_info = display.Info()
         resolution = (display_info.current_w, display_info.current_h)
         self.display = display.set_mode(resolution, FULLSCREEN)
@@ -39,14 +41,6 @@ class GameEngine:
                 self.exit()
             elif evt.type == KEYDOWN and evt.key == K_ESCAPE:
                 self.exit()
-
-            # if evt.type == KEYDOWN:
-            #     if evt.key == K_1:
-            #         self.screen_manager.switch_screen("game")
-            #     elif evt.key == K_2:
-            #         self.screen_manager.switch_screen("highscores")
-            #     elif evt.key == K_3:
-            #         self.screen_manager.switch_screen("select")
 
             self.screen_manager.handle_input(evt)
 
