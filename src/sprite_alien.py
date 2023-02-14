@@ -15,14 +15,14 @@ class SpriteAlien(Sprite):
         self.color = color
         self.constraints = WORLD_CONSTRAINTS['game']
         self.explosion_schema = [
-            '    X   X    ',
-            ' X   X X   X ',
-            '  X       X  ',
-            '   X     X   ',
-            'XX         XX',
-            '   X     X   ',
-            '  X  X X  X  ',
-            ' X  X   X  X '
+            '      X    X      ',
+            '   X   X  X   X   ',
+            '    X        X    ',
+            '     X      X     ',
+            '  XX          XX  ',
+            '     X      X     ',
+            '    X  X  X  X    ',
+            '   X  X    X  X   '
         ]
         self.pos = pos
         self.speed = 10
@@ -37,24 +37,24 @@ class SpriteAlienCrab(SpriteAlien):
     def __init__(self, pos, color):
         self.alien_schema = [
             [
-                '  X     X  ',
-                '   X   X   ',
-                '  XXXXXXX  ',
-                ' XX XXX XX ',
-                'XXXXXXXXXXX',
-                'X XXXXXXX X',
-                'X X     X X',
-                '   XX XX   '
+                '    X     X     ',
+                '     X   X      ',
+                '    XXXXXXX     ',
+                '   XX XXX XX    ',
+                '  XXXXXXXXXXX   ',
+                '  X XXXXXXX X   ',
+                '  X X     X X   ',
+                '     XX XX      '
             ],
             [
-                '  X     X  ',
-                'X  X   X  X',
-                'X XXXXXXX X',
-                'XXX XXX XXX',
-                'XXXXXXXXXXX',
-                ' XXXXXXXXX ',
-                '  X     X  ',
-                ' X       X '
+                '    X     X     ',
+                '  X  X   X  X   ',
+                '  X XXXXXXX X   ',
+                '  XXX XXX XXX   ',
+                '  XXXXXXXXXXX   ',
+                '   XXXXXXXXX    ',
+                '    X     X     ',
+                '   X       X    '
             ]
         ]
         super().__init__(pos, color, 'crab')
@@ -64,24 +64,24 @@ class SpriteAlienMartian(SpriteAlien):
     def __init__(self, pos, color):
         self.alien_schema = [
             [
-                '    XXXX    ',
-                ' XXXXXXXXXX ',
-                'XXXXXXXXXXXX',
-                'XXX  XX  XXX',
-                'XXXXXXXXXXXX',
-                '   XX  XX   ',
-                '  XX    XX  ',
-                'XX   XX   XX'
+                '      XXXX      ',
+                '   XXXXXXXXXX   ',
+                '  XXXXXXXXXXXX  ',
+                '  XXX  XX  XXX  ',
+                '  XXXXXXXXXXXX  ',
+                '     XX  XX     ',
+                '    XX    XX    ',
+                '  XX   XX   XX  '
             ],
             [
-                '    XXXX    ',
-                ' XXXXXXXXXX ',
-                'XXXXXXXXXXXX',
-                'XXX  XX  XXX',
-                'XXXXXXXXXXXX',
-                '  XXX  XXX  ',
-                ' XX  XX  XX ',
-                '  XX    XX  '
+                '      XXXX      ',
+                '   XXXXXXXXXX   ',
+                '  XXXXXXXXXXXX  ',
+                '  XXX  XX  XXX  ',
+                '  XXXXXXXXXXXX  ',
+                '    XXX  XXX    ',
+                '   XX  XX  XX   ',
+                '    XX    XX    '
             ]
         ]
         super().__init__(pos, color, 'martian')
@@ -91,24 +91,24 @@ class SpriteAlienSquid(SpriteAlien):
     def __init__(self, pos, color):
         self.alien_schema = [
             [
-                '   XX   ',
-                '  XXXX  ',
-                ' XXXXXX ',
-                'XX XX XX',
-                'XXXXXXXX',
-                '  X  X  ',
-                ' X XX X ',
-                'X X  X X'
+                '       XX       ',
+                '      XXXX      ',
+                '     XXXXXX     ',
+                '    XX XX XX    ',
+                '    XXXXXXXX    ',
+                '      X  X      ',
+                '     X XX X     ',
+                '    X X  X X    '
             ],
             [
-                '   XX   ',
-                '  XXXX  ',
-                ' XXXXXX ',
-                'XX XX XX',
-                'XXXXXXXX',
-                ' X XX X ',
-                'X      X',
-                ' X    X '
+                '       XX       ',
+                '      XXXX      ',
+                '     XXXXXX     ',
+                '    XX XX XX    ',
+                '    XXXXXXXX    ',
+                '     X XX X     ',
+                '    X      X    ',
+                '     X    X     '
             ]
         ]
         super().__init__(pos, color, 'squid')
