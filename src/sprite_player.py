@@ -1,13 +1,12 @@
 """
 """
 
-from pygame import draw, Rect, SRCALPHA
-from pygame.constants import KEYDOWN, K_LEFT, K_RIGHT
+from pygame.constants import KEYDOWN, KEYUP, K_LEFT, K_RIGHT
 from pygame.math import Vector2
 from pygame.sprite import Sprite
-from pygame.surface import Surface
 
 from game_constants import STARSHIP_COLOR, WORLD_CONSTRAINTS
+from game_utils import draw_sprite
 
 class SpritePlayer(Sprite):
     DIR_LEFT = -1
@@ -19,9 +18,8 @@ class SpritePlayer(Sprite):
         self.color = STARSHIP_COLOR
         self.constraints = WORLD_CONSTRAINTS['game']
         self.dir = self.DIR_STOP
-        self.pixel = Vector2(4, 4)
         self.pos = Vector2(self.constraints.x // 2, self.constraints.y - 100)
-        self.schema = [
+        self.ship_schema = [
             '      X      ',
             '     XXX     ',
             '     XXX     ',
@@ -32,22 +30,8 @@ class SpritePlayer(Sprite):
         ]
         self.speed = 10
 
-        self.image = self._draw_ship()
+        self.image = draw_sprite(self.ship_schema, self.color)
         self.rect = self.image.get_rect(center = self.pos)
-
-    def _draw_ship(self):
-        width = max([len(row) for row in self.schema])
-        height = len(self.schema)
-        ship = Surface((width * self.pixel.x, height * self.pixel.y), SRCALPHA)
-
-        for idx_row, row in enumerate(self.schema):
-            for idx_char, char in enumerate(row):
-                if char != ' ':
-                    coords = Vector2(idx_char * self.pixel.x, idx_row * self.pixel.y)
-                    rect = Rect(coords, self.pixel)
-                    draw.rect(ship, self.color, rect)
-
-        return ship
 
     def handle_input(self, evt):
         if evt.type == KEYDOWN:
@@ -55,6 +39,8 @@ class SpritePlayer(Sprite):
                 self.dir = self.DIR_LEFT
             elif evt.key == K_RIGHT:
                 self.dir = self.DIR_RIGHT
+        elif evt.type == KEYUP:
+            self.dir = self.DIR_STOP
 
     def update(self):
         self.pos.x += self.speed * self.dir
