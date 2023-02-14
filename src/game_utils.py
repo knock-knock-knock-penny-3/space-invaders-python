@@ -5,7 +5,18 @@ from pygame.math import Vector2
 from pygame.mixer import Sound
 from pygame.surface import Surface
 
-from game_constants import EMPTY_PIXEL, PIXEL_SIZE, RESOURCES_DIR_NAME, SOUNDS_DIR_NAME
+from game_constants import (
+    EMPTY_PIXEL,
+    PIXEL_SIZE,
+    RESOURCES_DIR_NAME,
+    SOUNDS_DIR_NAME,
+    STORE
+)
+
+def add_userevent():
+    new_userevent = STORE['last_userevent'] + 1
+    STORE['last_userevent'] = new_userevent
+    return new_userevent
 
 def draw_sprite(schema, color):
     width = max([len(row) for row in schema])
